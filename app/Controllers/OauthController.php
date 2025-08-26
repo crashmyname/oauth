@@ -26,26 +26,19 @@ class OauthController extends BaseController
 
         if ($request->code) {
             try {
-                // Tukar authorization code jadi access token + refresh token
                 $accessToken = $provider->getAccessToken('authorization_code', [
                     'code' => $request->code
                 ]);
-
                 echo "<h2>Access Token:</h2>";
                 echo "<pre>" . $accessToken->getToken() . "</pre>";
-
                 echo "<h2>Refresh Token:</h2>";
                 echo "<pre>" . $accessToken->getRefreshToken() . "</pre>";
-
                 echo "<h2>Expires:</h2>";
                 echo date('Y-m-d H:i:s', $accessToken->getExpires());
-
-                // Refresh token inilah yang nanti dipakai di PHPMailer setOAuth
             } catch (\Exception $e) {
                 exit('Error saat tukar code ke token: ' . $e->getMessage());
             }
         } else {
-            // Kalau belum ada code, arahkan user ke login Microsoft
             $authUrl = $provider->getAuthorizationUrl();
             header('Location: ' . $authUrl);
             exit;
