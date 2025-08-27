@@ -61,7 +61,7 @@ class OauthController extends BaseController
             $provider = new GenericProvider([
                 'clientId'                => env('AUTH_CLIENT_ID'),
                 'clientSecret'            => env('AUTH_CLIENT_SECRET'),
-                'redirectUri'             => 'https://localhost/ebudgeting/tesoauth',
+                'redirectUri'             => 'https://10.203.84.25/oauth/v1/callback',
                 'urlAuthorize'            => 'https://login.microsoftonline.com/'.env('AUTH_TENANT_ID').'/oauth2/v2.0/authorize',
                 'urlAccessToken'          => 'https://login.microsoftonline.com/'.env('AUTH_TENANT_ID').'/oauth2/v2.0/token',
                 'urlResourceOwnerDetails' => '',
