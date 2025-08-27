@@ -9,3 +9,4 @@ Route::get('/', function(){
     return view('welcome/welcome',['title'=>$title]);
 });
 Route::get('/v1/callback',[OauthController::class, 'callback']);
+Route::get('v1/test-oauth',[OauthController::class, 'testOauth']);
