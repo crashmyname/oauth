@@ -58,7 +58,6 @@ class OauthController extends BaseController
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth   = true;
 
-            // OAuth2 Provider Microsoft
             $provider = new GenericProvider([
                 'clientId'                => env('AUTH_CLIENT_ID'),
                 'clientSecret'            => env('AUTH_CLIENT_SECRET'),
@@ -66,7 +65,7 @@ class OauthController extends BaseController
                 'urlAuthorize'            => 'https://login.microsoftonline.com/'.env('AUTH_TENANT_ID').'/oauth2/v2.0/authorize',
                 'urlAccessToken'          => 'https://login.microsoftonline.com/'.env('AUTH_TENANT_ID').'/oauth2/v2.0/token',
                 'urlResourceOwnerDetails' => '',
-                'scopes'                  => 'https://outlook.office.com/SMTP.Send offline_access',
+                'scopes'                  => 'https://outlook.office.com/SMTP.Send',
             ]);
 
             $mail->setOAuth(new OAuth([
@@ -74,7 +73,7 @@ class OauthController extends BaseController
                 'clientId'      => env('AUTH_CLIENT_ID'),
                 'clientSecret'  => env('AUTH_CLIENT_SECRET'),
                 'refreshToken'  => '',
-                'userName'      => 'ISE00010@stanley-electric.com', // alamat email pengirim
+                'userName'      => 'ISE00010@stanley-electric.com',
             ]));
 
             $mail->setFrom('ISE00010@stanley-electric.com', 'Test Oauth');
