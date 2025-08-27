@@ -58,6 +58,8 @@ class OauthController extends BaseController
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth   = true;
 
+            $mail->AuthType = 'XOAUTH2';
+            
             $provider = new GenericProvider([
                 'clientId'                => env('AUTH_CLIENT_ID'),
                 'clientSecret'            => env('AUTH_CLIENT_SECRET'),
